@@ -1,7 +1,7 @@
 import express from "express";
 import "express-async-errors";
 
-let dwits = [
+let dweets = [
   {
     id: "1",
     text: "haha",
@@ -23,30 +23,30 @@ let dwits = [
 ];
 const router = express.Router();
 
-//Get / dwit
-//Get / dwit?userId=userId
+//Get / dweet
+//Get / dweet?userId=userId
 router.get("/", (req, res, next) => {
   const userId = req.query.userId;
-  const data = userId ? dwits.filter((d) => d.userId === userId) : dwits;
+  const data = userId ? dweets.filter((d) => d.userId === userId) : dweets;
 
   res.status(200).json(data);
 });
 
-//Get / dwit/:id
+//Get / dweet/:id
 router.get("/:id", (req, res, next) => {
   const id = req.params.id;
-  const dwit = dwits.find((d) => d.id === id);
-  if (dwit) {
-    res.status(200).json(dwit);
+  const dweet = dweets.find((d) => d.id === id);
+  if (dweet) {
+    res.status(200).json(dweet);
   } else {
     res.status(404).json({ message: "id not found" });
   }
 });
 
-//Post / dwit
+//Post / dweet
 router.post("/", (req, res, next) => {
   const { text, name, userId } = req.body;
-  const dwit = {
+  const dweet = {
     id: Date.now().toString(),
     text,
     createdAt: new Date().toString(),
@@ -55,28 +55,28 @@ router.post("/", (req, res, next) => {
     name,
     userId,
   };
-  dwits = [dwit, ...dwits];
-  res.status(201).json(dwit);
+  dweets = [dweet, ...dweets];
+  res.status(201).json(dweet);
 });
 
-//Put / dwit/:id
+//Put / dweet/:id
 router.put("/:id", (req, res, next) => {
   const id = req.params.id;
   const text = req.body.text;
 
-  const dwit = dwits.find((d) => d.id === id);
-  dwit && { ...dwit, text: req.body.text };
-  if (dwit) {
-    dwit.text = text;
-    res.status(200).json(dwit);
+  const dweet = dweets.find((d) => d.id === id);
+  dweet && { ...dweet, text: req.body.text };
+  if (dweet) {
+    dweet.text = text;
+    res.status(200).json(dweet);
   } else {
     res.status(404).json({ messege: "id not found" });
   }
 });
-//Delete / dwit/:id
+//Delete / dweet/:id
 router.delete("/:id", (req, res, next) => {
   const id = req.params.id;
-  dwits.filter((d) => d.id !== id);
+  dweets.filter((d) => d.id !== id);
 
   res.sendStatus(204);
 });

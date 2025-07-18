@@ -4,7 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import "express-async-errors";
 import { Request, Response, NextFunction } from "express";
-import dwitRouter from './router/dwit'
+import dweetRouter from './router/dweets'
 
 const app = express();
 app.use(express.json());
@@ -12,7 +12,7 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan("tiny"));
 
-app.use("/dwit", dwitRouter);
+app.use("/dweet", dweetRouter);
 app.use((req, res, next) => {
   res.sendStatus(404);
 });
