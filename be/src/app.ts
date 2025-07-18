@@ -1,0 +1,25 @@
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import helmet from "helmet";
+import "express-async-errors";
+import { Request, Response, NextFunction } from "express";
+import dwitRouter from './router/dwit'
+
+const app = express();
+app.use(express.json());
+app.use(helmet());
+app.use(cors());
+app.use(morgan("tiny"));
+
+app.use("/dwit", dwitRouter);
+app.use((req, res, next) => {
+  res.sendStatus(404);
+});
+
+app.use((error:unknown, req:Request, res:Response, next:NextFunction) => {
+  console.error(error);
+  res.sendStatus(500);
+});
+
+app.listen(8080);
