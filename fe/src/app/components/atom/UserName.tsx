@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function UserName() {
-  return (
-    <h2 className='text-lg'>dbfladl2</h2>
-  )
+export default function UserName({ children }: { children: string }) {
+  return <h2 className="text-lg">{children}</h2>;
 }
