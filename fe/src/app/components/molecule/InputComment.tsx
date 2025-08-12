@@ -6,15 +6,17 @@ import Button from "../atom/Button";
 import { DweetService } from "@/lib/api/dweets";
 import { CommentContext } from "@/context/commentContext";
 
-
-
 export default function InputComment() {
   const dweet = new DweetService();
 
   const [text, setText] = useState("");
   const commentSubmit = (text: string) => {
-    console.log(text)
+    if (!text.trim()) {
+      alert("Please enter a comment.");
+      return;
+    } 
     dweet.post({ text, userId: "yurim" });
+    setText("");
   };
 
   return (

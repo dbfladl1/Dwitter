@@ -13,7 +13,7 @@ export default function Dweets() {
 
   useEffect(() => {
     fetchDweets();
-  }, []);
+  }, [dweets]);
 
   return (
     <section className="mt-5">
