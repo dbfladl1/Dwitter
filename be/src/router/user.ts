@@ -37,11 +37,7 @@ router.post(
     body("email").isEmail().withMessage("유효한 이메일을 입력해주세요"),
     validate,
   ],
-  (req: Request, res: Response) => {
-    console.log("Dweet added:", "되고 잇어?");
-    res.sendStatus(201);
-    console.log("Dweet added:", "되고 잇어?");
-  }
+
 );
 
 export default router;

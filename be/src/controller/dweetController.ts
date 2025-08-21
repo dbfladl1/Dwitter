@@ -21,13 +21,10 @@ export async function getById(req: Request, res: Response) {
   }
 }
 
-console.log("Dweet controller initialized.");
 
 export async function addDweet(req: Request, res: Response) {
-  console.log("Adding new dweet...");
   const { text, name, userId } = req.body;
   const dweet = await dweetRepository.add(text, name, userId);
-  console.log("Dweet added:", dweet);
 
   res.status(201).json(dweet);
 }
