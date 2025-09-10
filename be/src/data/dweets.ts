@@ -3,18 +3,12 @@ let dweets = [
     id: "1",
     text: "hssssaha",
     createdAt: Date.now().toString(),
-    profileUrl:
-      "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
-    nickname: "rimiss",
     userId: "dbfladl1",
   },
   {
     id: "2",
     text: "hassha2",
     createdAt: Date.now().toString(),
-    profileUrl:
-      "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
-    nickname: "rimi",
     userId: "dbfladl2",
   },
 ];

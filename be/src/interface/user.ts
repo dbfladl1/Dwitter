@@ -4,5 +4,5 @@ export interface User {
   password: string;
   nickname: string;
   email: string;
-  url?: string;
+  profileUrl?: string;
 }
