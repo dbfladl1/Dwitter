@@ -1,4 +1,4 @@
-import * as dweetRepository from "../data/dweets.ts";
+import * as dweetRepository from "../data/dweets";
 import { Request, Response } from "express";
 
 export async function getAll(req: Request, res: Response) {
@@ -33,7 +33,7 @@ export async function updateDweet(req: Request, res: Response) {
   const id = req.params.id;
   const text = req.body.text;
   const dweet = await dweetRepository.update(id, text);
-
+ 
   if (dweet) {
     res.status(200).json(dweet);
   } else {
