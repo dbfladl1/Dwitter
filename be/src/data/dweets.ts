@@ -5,7 +5,7 @@ let dweets = [
     createdAt: Date.now().toString(),
     profileUrl:
       "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
-    nickName: "rimiss",
+    nickname: "rimiss",
     userId: "dbfladl1",
   },
   {
@@ -14,7 +14,7 @@ let dweets = [
     createdAt: Date.now().toString(),
     profileUrl:
       "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
-    nickName: "rimi",
+    nickname: "rimi",
     userId: "dbfladl2",
   },
 ];
@@ -31,14 +31,14 @@ export function getById(id: string) {
   return dweets.find((d) => d.id === id);
 }
 
-export function add(text: string, nickName: string, userId: string) {
+export function add(text: string, nickname: string, userId: string) {
   const dweet = {
     id: Date.now().toString(),
     text,
     createdAt: new Date().toString(),
     profileUrl:
       "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
-    nickName,
+    nickname,
     userId,
   };
   dweets = [dweet, ...dweets];
