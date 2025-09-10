@@ -7,7 +7,7 @@ let users: User[] = [
     password: "Password1!",
     nickname: "rimiss",
     email: "abc@abc.com",
-    url: "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
+    profileUrl: "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",
   },
 ];
 

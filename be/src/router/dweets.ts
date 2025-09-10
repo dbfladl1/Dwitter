@@ -1,8 +1,6 @@
-import { body } from "express-validator";
 import express from "express";
 import "express-async-errors";
 import * as dweetController from "../controller/dweetController";
-import { validate } from "../middleware/validator";
 import { isAuth } from "../middleware/auth";
 
 const router = express.Router();
