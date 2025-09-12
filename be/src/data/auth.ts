@@ -4,7 +4,7 @@ let users: User[] = [
   {
     id: "1",
     userId: "user01",
-    password: "Password1!",
+    password: "$2b$10$dDYiRytWkt0opIVuuk05.OKpa7fQS7Fwl4tyLiTly8xsStnehRNBi",
     nickname: "rimiss",
     email: "abc@abc.com",
     profileUrl: "https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png",

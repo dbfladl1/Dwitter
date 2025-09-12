@@ -45,20 +45,19 @@ export async function signup(req: Request, res: Response) {
     url?: string;
   } = { userId, password: hashed, nickname, email, url };
   const found = await userRepository.findByUserId(userId);
-  console.log(found);
   if (found) {
     return res.status(409).json({ message: "이미 존재하는 아이디입니다." });
   }
 
   const createdUserId = await userRepository.createUser(user);
   const token = createJwtToken(createdUserId);
-  console.log(token);
 
   return res.status(201).json({ token, userId });
 }
 
-export const me:RequestHandler = async (req: Request, res: Response) => {
-  const user = await userRepository.findByUserId(req as any);
+export const me = async (req: Request, res: Response) => {
+  const user = await userRepository.findByUserId(req.userId as any);
+
   if (!user) {
     return res.status(404).json({ message: "user not found" });
   }

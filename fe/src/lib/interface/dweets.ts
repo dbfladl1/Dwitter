@@ -3,6 +3,6 @@ export interface DweetsAttr{
 	text:string, 
 	createdAt:Date, 
 	profileUrl:string, 
-	name:string, 
+	nickname:string, 
 	userId:string 
 }

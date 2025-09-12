@@ -23,8 +23,8 @@ export async function getById(req: Request, res: Response) {
 
 
 export async function addDweet(req: Request, res: Response) {
-  const { text, name, userId } = req.body;
-  const dweet = await dweetRepository.add(text, name, userId);
+  const { text, userId } = req.body;
+  const dweet = await dweetRepository.add(text, userId);
 
   res.status(201).json(dweet);
 }
