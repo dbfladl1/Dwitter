@@ -2,9 +2,7 @@ import { Request, RequestHandler, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import * as userRepository from "../data/auth";
 
-const AUTH_ERROR = { message: "Authentication Error" };
-const AUTH_ERROR2 = { message: "Authentication Error2" };
-const AUTH_ERROR3 = { message: "Authentication Error3" };
+const AUTH_ERROR = { type: 401, message: "Authentication Error" };
 
 export const isAuth = async (
   req: Request,
@@ -12,9 +10,8 @@ export const isAuth = async (
   next: NextFunction
 ) => {
   const authHeader = req.get("Authorization");
-  console.log("auth",authHeader)
   if (!(authHeader && authHeader?.startsWith("Bearer "))) {
-    return res.status(401).json(AUTH_ERROR3);
+    return res.status(401).json(AUTH_ERROR);
   }
 
   const token = authHeader.split(" ")[1];
@@ -23,17 +20,21 @@ export const isAuth = async (
     "757774832747f38db3fa3f83a468f79a",
     async (err, decoded) => {
       if (err) {
-        console.log(err)
+        console.log(err);
         return res.status(401).json(AUTH_ERROR);
       }
       let userId: string | undefined;
-      if (typeof decoded === "object" && decoded !== null && "userId" in decoded) {
+      if (
+        typeof decoded === "object" &&
+        decoded !== null &&
+        "userId" in decoded
+      ) {
         userId = (decoded as any).userId;
       }
       const user = userId ? await userRepository.findByUserId(userId) : null;
 
       if (!user) {
-        return res.status(401).json(AUTH_ERROR2);
+        return res.status(401).json(AUTH_ERROR);
       }
       req.userId = user.userId;
       next();
