@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default function layout() {
+export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div>layout</div>
-  )
+    <div className="min-h-dvh flex items-center justify-center">{children}</div>
+  );
 }
